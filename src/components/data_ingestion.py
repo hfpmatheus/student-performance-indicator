@@ -23,6 +23,7 @@ class DataIngestion:
 
         try:
             df = pd.read_csv('data/raw/stud.csv')
+            df['average_score'] = (df['math_score'] + df['reading_score'] + df['writing_score']) / 3
             df.to_csv(self.ingestion_config.raw_data_path, index=False)
 
             logging.info("Started train test split")
