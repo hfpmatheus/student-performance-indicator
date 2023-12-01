@@ -9,8 +9,6 @@ from sklearn.preprocessing import OneHotEncoder
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
-from src.components.data_ingestion import DataIngestion
-
 
 @dataclass
 class DataTransformationConfig:
@@ -80,14 +78,7 @@ class DataTransformation:
             save_object("artifacts/objects/preprocessor.pkl", preprocessor_object)
             logging.info("Saved preprocessor object in pickle file.")
 
-            return (train_arr, test_arr, self.data_transformation_config.preprocessor_object_file_path)
+            return (train_arr, test_arr)
         
         except Exception as e:
             raise CustomException(e, sys)
-
-if __name__ == '__main__':
-    data_ingestion = DataIngestion()
-    train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
-
-    data_transformation = DataTransformation()
-    train_arr, test_arr, preprocessor_object_file_path = data_transformation.start_data_transformation(train_data_path, test_data_path)
