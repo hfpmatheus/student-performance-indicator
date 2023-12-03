@@ -1,0 +1,18 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Student Exam Performance Indicator</h1>
+   
+       <form action="{{ url_for('train_datapoint')}}" method="post">
+        <h1>
+            <legend>Student Exam Performance Train Pipeline</legend>
+        </h1>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Train the model" required />
+        </div>
+    </form>
+    <h2>
+       The models results was: {{report}}
+    </h2>
+   <body>
+</html>
